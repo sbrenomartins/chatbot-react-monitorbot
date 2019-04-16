@@ -3,14 +3,13 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  height: 80px;
   pointer-events: none;
+  padding: 5px;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #a9cae7;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,4 +29,24 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App-footer {
+  background-color: #a9cae7;
+  align-items: center;
+  font-size: calc(2px + 2vmin);
+  color: black;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.App-footer a{
+  text-decoration: none;
+  color: black;
+}
+
+.App-footer a:hover{
+  text-decoration: none;
+  color: rgb(255, 255, 255);
 }

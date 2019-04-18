@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: azure;
 }
 
 .App-logo {
@@ -49,4 +50,13 @@
 .App-footer a:hover{
   text-decoration: none;
   color: rgb(255, 255, 255);
+}
+
+.chatbot{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 81%;
+  width: 100%;
+  padding: 2px;
 }

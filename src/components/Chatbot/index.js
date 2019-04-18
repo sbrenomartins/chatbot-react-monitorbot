@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-import './index.css';
 import ChatHeader from './ChatHeader';
 import ChatConversa from './ChatConversa';
 import ChatMensagem from './ChatMensagem';

@@ -12,3 +12,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.header{
+  grid-area: header;
+}
+
+.footer{
+  grid-area: footer;
+}
+
+.chatbot{
+  grid-area: chatbot;
+}
+
+.App{
+  display: grid;
+  grid-template-areas: 
+  'header'
+  'chatbot'
+  'footer';
+}
+
+

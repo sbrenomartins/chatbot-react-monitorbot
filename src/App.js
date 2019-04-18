@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
+
+import { Provider } from 'react-redux';
+import store from './store';
+
 import Header from './components/Header';
 import Chatbot from './components/Chatbot';
 import Footer from './components/Footer';
@@ -7,11 +11,13 @@ import Footer from './components/Footer';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-        <Chatbot />
-        <Footer />
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <Header />
+          <Chatbot />
+          <Footer />
+        </div>
+      </Provider>
     );
   }
 }

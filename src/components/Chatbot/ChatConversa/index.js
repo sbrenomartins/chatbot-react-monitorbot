@@ -1,20 +1,49 @@
 import React, { Component } from 'react'
 import { Alert, Badge } from 'reactstrap';
+import { connect } from 'react-redux';
 
-export default class ChatConversa extends Component {
+class ChatConversa extends Component {
+
+  renderMensagem(msg, autor){
+    return (
+      <div>
+        {
+        autor === 'user' && <span>
+          <div className="user-message">
+            <Badge color="success">Você disse:</Badge>
+            <Alert color="success">{msg}</Alert>
+          </div>
+        </span>
+        }
+        {
+          autor === 'bot' && <span>
+            <div className="chatbot-message">
+              <Badge color="info">Monitorbot disse:</Badge>
+              <Alert color="info">{msg}</Alert>
+            </div>
+          </span>
+        }
+      </div>
+    )
+  }
+
   render() {
     return (
-      <div className="conversa">
-        <div className="chatbot-message">
-          <Badge color="info">Monitorbot disse:</Badge>
-          <Alert color="info">Olá. Seja bem vindo! Eu sou o MonitorBot e estou aqui para te ajudar com suas dúvidas sobre Programação Orientada à Objetos. Então, me diz, em que posso te ajudar hoje?</Alert>
-        </div>
-
-        <div className="user-message">
-          <Badge color="success">Você disse:</Badge>
-          <Alert color="success">Olá!</Alert>
-        </div>
+      <div className="chat-conversa">
+        {
+          this.props.mensagens.map(key => {
+            return this.renderMensagem(key, 'user');
+          })
+        }
       </div>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    mensagens: state.chat.mensagens
+  }
+}
+
+export default connect(mapStateToProps, null)(ChatConversa);

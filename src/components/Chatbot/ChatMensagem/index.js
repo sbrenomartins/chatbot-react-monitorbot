@@ -32,7 +32,7 @@ class ChatMensagem extends Component {
 
   render() {
     return (
-      <div className="mensagem"> 
+      <div className="chat-mensagem"> 
         <InputGroup>
           <Input onKeyDown={this.enviaTexto} placeholder="Digite sua mensagem" onChange={e => this.setState({ mensagem: e.target.value })} />
           <InputGroupAddon addonType="append">

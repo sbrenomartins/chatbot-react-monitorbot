@@ -1,0 +1,35 @@
+.chat-conteudo{
+    display: grid;
+    grid-template-rows: 40px auto 40px;
+    height: calc(100vh - 150px);
+}
+
+.chat-header{
+    border-bottom: 2px solid rgb(182, 221, 226);
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.chat-conversa{
+
+}
+
+.chat-mensagem{
+
+}
+
+.chatbot-message{
+    width: 90%;
+    align-items: left;
+    align-content: left;
+    text-align: left;
+}
+
+.user-message{
+    width: 90%;
+    align-items: right;
+    align-content: right;
+    text-align: right;
+    margin-left: 10%;
+}

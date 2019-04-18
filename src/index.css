@@ -13,24 +13,39 @@ code {
     monospace;
 }
 
+.App-logo{
+  height: 80px;
+}
+
 .header{
   grid-area: header;
+  background-color: rgb(182, 221, 226);
 }
 
 .footer{
   grid-area: footer;
+  background-color: rgb(182, 221, 226);
+  height: 48px;
+  margin: 0;
+  bottom: 0;
+  width: 100%;
+  position: fixed;
+  font-size: 13px;
 }
 
 .chatbot{
   grid-area: chatbot;
+  height: calc(100vh - 150px);
+  margin: 10px;
 }
 
 .App{
   display: grid;
+  align-items: center;
   grid-template-areas: 
-  'header'
-  'chatbot'
-  'footer';
+  'header header header header'
+  'chatbot chatbot chatbot chatbot'
+  'footer footer footer footer';
 }
 
 

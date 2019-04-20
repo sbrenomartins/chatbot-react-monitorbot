@@ -12,11 +12,7 @@
 }
 
 .chat-conversa{
-
-}
-
-.chat-mensagem{
-
+    overflow: auto;
 }
 
 .chatbot-message{

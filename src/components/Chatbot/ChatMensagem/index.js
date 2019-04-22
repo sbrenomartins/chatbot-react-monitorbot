@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { InputGroup, Input, InputGroupAddon, Button } from 'reactstrap';
+import { InputGroup, Input, InputGroupAddon, Button, Form } from 'reactstrap';
 
 import { enviaMensagem } from '../../../store/actions/chat';
 import { conversaWatson } from '../../../store/actions/watson';
@@ -36,7 +36,8 @@ class ChatMensagem extends Component {
     }
   }
 
-  enviaTextoBotao(){
+  enviaTextoBotao(e){
+    e.preventDefault();
     //console.log(this.state.mensagem);
     const mensagem = {
       texto: this.state.mensagem,
@@ -53,12 +54,14 @@ class ChatMensagem extends Component {
   render() {
     return (
       <div className="chat-mensagem"> 
-        <InputGroup>
-          <Input onKeyDown={this.enviaTexto} placeholder="Digite sua mensagem" onChange={e => this.setState({ mensagem: e.target.value })} />
-          <InputGroupAddon addonType="append">
-            <Button onClick={this.enviaTextoBotao} color="info"> Enviar </Button>
-          </InputGroupAddon>
-        </InputGroup>
+        <Form onSubmit={this.enviaTextoBotao}>
+          <InputGroup>
+            <Input onKeyDown={this.enviaTexto} placeholder="Digite sua mensagem" onChange={e => this.setState({ mensagem: e.target.value })} />
+            <InputGroupAddon addonType="append">
+              <Button color="info" type="submit"> Enviar </Button>
+            </InputGroupAddon>
+          </InputGroup>
+        </Form>
       </div>
     )
   }

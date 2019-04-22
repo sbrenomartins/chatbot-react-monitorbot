@@ -44,8 +44,7 @@ code {
   align-items: center;
   grid-template-areas: 
   'header header header header'
-  'chatbot chatbot chatbot chatbot'
-  'footer footer footer footer';
+  'chatbot chatbot chatbot chatbot';
 }
 
 

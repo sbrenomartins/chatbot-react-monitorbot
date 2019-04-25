@@ -22,17 +22,7 @@ class ChatMensagem extends Component {
   enviaTexto(e){
     if(e.keyCode === 13){
       //console.log(e.target.value);
-      const mensagem = {
-        texto: e.target.value,
-        origem: 'user'
-      }
-      let contexto = {};
-      if (this.props.resposta.data && this.props.resposta.data.context){
-        contexto = this.props.resposta.data.context
-      }
-      this.props.enviaTexto(mensagem);
-      this.props.conversaWatson(mensagem, contexto);
-      e.target.value = '';
+      this.enviaTextoBotao(e);
     }
   }
 

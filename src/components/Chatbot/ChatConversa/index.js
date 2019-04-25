@@ -59,7 +59,9 @@ class ChatConversa extends Component {
         {
           Object.keys(this.props.mensagens).map(key => {
             //console.log(this.props.mensagens[key]);
-            if(this.props.mensagens[key].origem === 'bot' && this.props.mensagens[key].texto.length <= 1){
+            if(this.props.mensagens[key].origem === 'user'){
+              return this.renderMensagem(this.props.mensagens[key], key);
+            } else if(this.props.mensagens[key].origem === 'bot' && this.props.mensagens[key].texto.length <= 1){
               return this.renderMensagem(this.props.mensagens[key], key);
             } else {
               return this.renderMensagemComPausa(this.props.mensagens[key], key);

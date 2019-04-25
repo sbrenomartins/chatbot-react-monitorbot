@@ -36,7 +36,7 @@ export const conversaWatson = ((mensagem, contexto) => {
             .then((data) => { 
                 dispatch(conversaWatsonSuccess(data))
                 const msg = {
-                    texto: data.data.output.text[0],
+                    texto: data.data.output.text,
                     origem: 'bot'
                 }
                 dispatch(enviaMensagem(msg));

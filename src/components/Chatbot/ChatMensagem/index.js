@@ -49,6 +49,8 @@ class ChatMensagem extends Component {
     }
     this.props.enviaTextoBotao(mensagem);
     this.props.conversaWatson(mensagem, contexto);
+    e.target.value = '';
+    this.setState({ mensagem: '' });
   } 
 
   render() {
@@ -56,7 +58,7 @@ class ChatMensagem extends Component {
       <div className="chat-mensagem"> 
         <Form onSubmit={this.enviaTextoBotao}>
           <InputGroup>
-            <Input onKeyDown={this.enviaTexto} placeholder="Digite sua mensagem" onChange={e => this.setState({ mensagem: e.target.value })} />
+            <Input onKeyDown={this.enviaTexto} placeholder="Digite sua mensagem" onChange={e => this.setState({ mensagem: e.target.value })} value={this.state.mensagem} />
             <InputGroupAddon addonType="append">
               <Button color="info" type="submit"> Enviar </Button>
             </InputGroupAddon>

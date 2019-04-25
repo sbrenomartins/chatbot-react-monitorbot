@@ -19,7 +19,33 @@ class ChatConversa extends Component {
           msg.origem === 'bot' && <span>
             <div className="chatbot-message">
               <Badge color="info">Monitorbot disse:</Badge>
-              <Alert color="info">{msg.texto}</Alert>
+              <Alert color="info">{msg.texto[0]}</Alert>
+            </div>
+          </span>
+        }
+      </div>
+    )
+  }
+
+  renderMensagemComPausa(msg, k){
+    return (
+      <div key={k}>
+        {
+          msg.origem === 'user' && <span>
+          <div className="user-message">
+            <Badge color="success">Você disse:</Badge>
+            <Alert color="success">{msg.texto}</Alert>
+          </div>
+        </span>
+        }
+        {
+          msg.origem === 'bot' && <span>
+            <div className="chatbot-message">
+              <Badge color="info">Monitorbot disse:</Badge>
+              <Alert color="info">{msg.texto[0]}</Alert>
+              <Alert color="info">Digitando...</Alert>
+              <Badge color="info">Monitorbot disse:</Badge>
+              <Alert color="info">{msg.texto[1]}</Alert>
             </div>
           </span>
         }
@@ -32,7 +58,12 @@ class ChatConversa extends Component {
       <div className="chat-conversa">
         {
           Object.keys(this.props.mensagens).map(key => {
-            return this.renderMensagem(this.props.mensagens[key], key);
+            //console.log(this.props.mensagens[key]);
+            if(this.props.mensagens[key].origem === 'bot' && this.props.mensagens[key].texto.length <= 1){
+              return this.renderMensagem(this.props.mensagens[key], key);
+            } else {
+              return this.renderMensagemComPausa(this.props.mensagens[key], key);
+            }
           })
         }
       </div>

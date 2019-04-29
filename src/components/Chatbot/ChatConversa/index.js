@@ -4,27 +4,31 @@ import { connect } from 'react-redux';
 
 class ChatConversa extends Component {
 
+  state = {
+    entidade: ''
+  };
+
   renderMensagem(msg, k){
-    return (
-      <div key={k}>
-        {
-          msg.origem === 'user' && <span>
-          <div className="user-message">
-            <Badge color="success">Você disse:</Badge>
-            <Alert color="success">{msg.texto}</Alert>
+        return (
+          <div key={k}>
+            {
+              msg.origem === 'user' && <span>
+              <div className="user-message">
+                <Badge color="success">Você disse:</Badge>
+                <Alert color="success">{msg.texto}</Alert>
+              </div>
+            </span>
+            }
+            {
+              msg.origem === 'bot' && <span>
+                <div className="chatbot-message">
+                  <Badge color="info">Monitorbot disse:</Badge>
+                  <Alert color="info">{msg.texto.output.text[0]}</Alert>
+                </div>
+              </span>
+            }
           </div>
-        </span>
-        }
-        {
-          msg.origem === 'bot' && <span>
-            <div className="chatbot-message">
-              <Badge color="info">Monitorbot disse:</Badge>
-              <Alert color="info">{msg.texto[0]}</Alert>
-            </div>
-          </span>
-        }
-      </div>
-    )
+        )
   }
 
   renderMensagemComPausa(msg, k){
@@ -42,10 +46,32 @@ class ChatConversa extends Component {
           msg.origem === 'bot' && <span>
             <div className="chatbot-message">
               <Badge color="info">Monitorbot disse:</Badge>
-              <Alert color="info">{msg.texto[0]}</Alert>
-              <Alert color="info">Digitando...</Alert>
+              <Alert color="info">{msg.texto.output.text[0]}</Alert>
               <Badge color="info">Monitorbot disse:</Badge>
-              <Alert color="info">{msg.texto[1]}</Alert>
+              <Alert color="info">{msg.texto.output.text[1]}</Alert>
+            </div>
+          </span>
+        }
+      </div>
+    )
+  }
+
+  renderMensagemCodigo(msg, k){
+    return (
+      <div key={k}>
+        {
+          msg.origem === 'user' && <span>
+          <div className="user-message">
+            <Badge color="success">Você disse:</Badge>
+            <Alert color="success">{msg.texto}</Alert>
+          </div>
+        </span>
+        }
+        {
+          msg.origem === 'bot' && <span>
+            <div className="chatbot-message">
+              <Badge color="info">Monitorbot disse:</Badge>
+              <Alert color="info"><a href={msg.texto.output.text[0]} target="_blank" rel="noopener noreferrer">Você consegue ver um exemplo nesse link ;)</a></Alert>
             </div>
           </span>
         }
@@ -58,10 +84,13 @@ class ChatConversa extends Component {
       <div className="chat-conversa">
         {
           Object.keys(this.props.mensagens).map(key => {
-            //console.log(this.props.mensagens[key]);
+            console.log(this.props.mensagens[key].texto);
+            //this.setState({ entidade: this.props.mensagens[key].texto.entities });
             if(this.props.mensagens[key].origem === 'user'){
               return this.renderMensagem(this.props.mensagens[key], key);
-            } else if(this.props.mensagens[key].origem === 'bot' && this.props.mensagens[key].texto.length <= 1){
+            } else if(this.props.mensagens[key].texto.entities[0] !== undefined && this.props.mensagens[key].texto.entities[0].value === "exemplo"){
+              return this.renderMensagemCodigo(this.props.mensagens[key], key);
+            } else if(this.props.mensagens[key].origem === 'bot' && this.props.mensagens[key].texto.output.text.length <= 1){
               return this.renderMensagem(this.props.mensagens[key], key);
             } else {
               return this.renderMensagemComPausa(this.props.mensagens[key], key);

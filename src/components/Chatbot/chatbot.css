@@ -33,3 +33,9 @@
 img{
     max-width: 90%;
 }
+
+.codigo{
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}

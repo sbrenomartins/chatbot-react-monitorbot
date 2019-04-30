@@ -23,7 +23,7 @@ class ChatConversa extends Component {
               msg.origem === 'bot' && <span>
                 <div className="chatbot-message">
                   <Badge color="info">Monitorbot disse:</Badge>
-                  <Alert color="info">{msg.texto.output.text[0]}</Alert>
+                  <Alert color="info"><pre wrap="wrap">{msg.texto.output.text[0]}</pre></Alert>
                 </div>
               </span>
             }
@@ -46,9 +46,9 @@ class ChatConversa extends Component {
           msg.origem === 'bot' && <span>
             <div className="chatbot-message">
               <Badge color="info">Monitorbot disse:</Badge>
-              <Alert color="info">{msg.texto.output.text[0]}</Alert>
+              <Alert color="info"><pre wrap="wrap">{msg.texto.output.text[0]}</pre></Alert>
               <Badge color="info">Monitorbot disse:</Badge>
-              <Alert color="info">{msg.texto.output.text[1]}</Alert>
+              <Alert color="info"><pre wrap="wrap">{msg.texto.output.text[1]}</pre></Alert>
             </div>
           </span>
         }
@@ -71,7 +71,7 @@ class ChatConversa extends Component {
           msg.origem === 'bot' && <span>
             <div className="chatbot-message">
               <Badge color="info">Monitorbot disse:</Badge>
-              <Alert color="info"><code><pre>{msg.texto.output.text}</pre></code></Alert>
+              <Alert color="info"><code><pre wrap="wrap">{msg.texto.output.text}</pre></code></Alert>
             </div>
           </span>
         }
@@ -88,8 +88,6 @@ class ChatConversa extends Component {
             //this.setState({ entidade: this.props.mensagens[key].texto.entities });
             if(this.props.mensagens[key].origem === 'user'){
               return this.renderMensagem(this.props.mensagens[key], key);
-            } else if(this.props.mensagens[key].texto.entities[0] !== undefined && this.props.mensagens[key].texto.entities[0].value === "exemplo"){
-              return this.renderMensagemCodigo(this.props.mensagens[key], key);
             } else if(this.props.mensagens[key].origem === 'bot' && this.props.mensagens[key].texto.output.text.length <= 1){
               return this.renderMensagem(this.props.mensagens[key], key);
             } else {

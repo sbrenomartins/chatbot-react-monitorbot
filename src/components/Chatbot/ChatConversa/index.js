@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Alert, Badge } from 'reactstrap';
 import { connect } from 'react-redux';
+import { ScrollTo } from "react-scroll-to";
 
 class ChatConversa extends Component {
 
@@ -8,9 +9,15 @@ class ChatConversa extends Component {
     entidade: ''
   };
 
+  componentDidUpdate(){
+    var x = document.getElementById('chat-conversa');
+    x.scrollTop = x.scrollHeight;
+    //window.scrollTo(window.scrollX, window.scrollY);
+  }
+
   renderMensagem(msg, k){
         return (
-          <div key={k}>
+          <div key={k} id="mensagem">
             {
               msg.origem === 'user' && <span>
               <div className="user-message">
@@ -33,7 +40,7 @@ class ChatConversa extends Component {
 
   renderMensagemComPausa(msg, k){
     return (
-      <div key={k}>
+      <div key={k} id="mensagem">
         {
           msg.origem === 'user' && <span>
           <div className="user-message">
@@ -58,7 +65,7 @@ class ChatConversa extends Component {
 
   renderMensagemCodigo(msg, k){
     return (
-      <div key={k}>
+      <div key={k} id="mensagem">
         {
           msg.origem === 'user' && <span>
           <div className="user-message">
@@ -81,7 +88,7 @@ class ChatConversa extends Component {
 
   render() {
     return (
-      <div className="chat-conversa">
+      <div className="chat-conversa" id="chat-conversa">
         {
           Object.keys(this.props.mensagens).map(key => {
             console.log(this.props.mensagens[key].texto);

@@ -4,4 +4,4 @@
 
 ### O Chatbot foi desenvolvido utilizando o IBM Watson Assistant, NodeJS e ReactJS.
 
-![](./pwa-chatbot.png)
+:![Chatbot](./pwa-chatbot.png "MonitorBot PWA")(app-monitorbot.herokuapp.com):

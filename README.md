@@ -5,5 +5,5 @@
 ### O Chatbot foi desenvolvido utilizando o IBM Watson Assistant, NodeJS e ReactJS.
 
 <p align="center">
-  <img width="460" height="300" src="./pwa-chatbot.png">
+  <img src="./pwa-chatbot.png">
 </p>
